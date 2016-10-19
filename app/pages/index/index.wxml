@@ -4,26 +4,49 @@
   {{loading.msg}}
 </loading>
 
+
 <!-- 查询表单 -->
-<form bindsubmit="submitForm">
-  <input placeholder="输入快递单号" name="code"/>
-  <button form-type="submit">搜索</button>
-</form>
+<view class="search-wrap" style="margin-top:44px;">
+  <form bindsubmit="submitForm">
+    <input placeholder="输入快递单号" name="code"/>
+    <button form-type="submit">搜索</button>
+  </form>
+</view>
+
 
 <!-- 错误消息提示 -->
-<view wx:if="{{error.show}}">
+<view wx:if="{{error.show}}" style="text-align:center;margin-top:20px;color:#f26666;font-size:14px;">
   <text>{{error.msg}}</text>
 </view>
 
 <!-- 结果展示 -->
-<view wx:if="{{detail.show}}">
+<view wx:if="{{detail.show}}" class="result-box">
+  <view style="margin:15px;">
+    <text class="tc-title">查询结果</text>
 
-  <text>快递单号:{{detail.result.nu}}</text>
-  <text>所属快递公司:{{detail.comName}}</text>
-  <text>状态:{{detail.stateName}}</text>
-
-
-  <block wx:for="{{detail.result.data}}" wx:for-index="idx" wx:for-item="item">
-    <view>{{item.context}}  {{item.time}}</view>
-  </block>
+    <!-- 订单主要信息 -->
+    <view class="tc-group"> 
+      <label class="tc-sub-title">快递单号：</label>
+      <text class="result-text">{{detail.result.nu}}</text>
+    </view>
+    <view class="tc-group"> 
+      <label class="tc-sub-title">所属快递公司：</label>
+      <text class="result-text">{{detail.comName}}</text>
+    </view>
+    <view class="tc-group"> 
+      <label class="tc-sub-title">状态：</label>
+      <text class="result-text">{{detail.stateName}}</text>
+    </view>   
+  </view>   
+  
+  <!-- 订单详细信息 -->
+  <view class="tc-table" style="margin-top:20px;">
+    <!-- 引入模板 -->
+    <import src="../template/template.wxml"/>
+    <!-- 信息列表 -->
+    <block wx:for="{{detail.result.data}}"  wx:for-item="item">
+      <template is="resultList" data="{{item}}"/>
+    </block>    
+  </view>  
 </view>
+

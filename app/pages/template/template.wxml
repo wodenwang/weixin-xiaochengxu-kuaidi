@@ -1,0 +1,10 @@
+<template name="resultList">
+    <view class="tc-tr">
+      <view class="tc-td result-time">
+        <view class="date">{{item.date}}</view>
+        <view class="time">{{item.time}}</view>
+      </view>
+      <view class="tc-td line"><view class="step-icon">v</view></view>
+      <text class="tc-td ">{{item.context}}</text>  
+    </view>
+</template>
