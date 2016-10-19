@@ -1,0 +1,124 @@
+.flex-wrap {
+    display: flex;
+    display: -webkit-flex;
+}
+.flex-item-1 {
+    flex: 1;
+}
+.flex-item-2 {
+    flex: 2;
+}
+
+.search-wrap {
+    padding : 0 15px;
+    position: relative;
+}
+.search-wrap input,.search-wrap button {
+    font-size: 14px;
+    font-family: "Microsoft YaHei";
+}
+.search-wrap input {
+    display: block;
+    border : 1px solid #e6e6e6;
+    border-radius: 0;
+    height : 50px;
+    line-height: 50px;
+    padding : 0 56px 0 15px;   
+}
+.search-wrap button {
+    position : absolute;
+    right : 15px;
+    top : 0;
+    height : 100%;
+    background-color : #1d95d4;
+    color : #fff;
+    border-radius: 0;
+    line-height: 50px;
+}
+.result-box {
+    margin-top : 30px;
+}
+.result-box .result-text {
+    color : #f34d45;
+    font-weight: bold;
+}
+.result-time .date {
+    display: block;
+}
+.result-time .time {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.tc-title {
+    font-size : 16px;
+    color : #000;
+    display: block;
+}
+.tc-group {
+    position: relative;
+    margin-top : 10px;
+    font-size : 14px;
+}
+.tc-sub-title {
+    color : #999;
+}
+
+.tc-table {
+    width : 100%;
+    display: table;
+    border-collapse: collapse;
+}
+.tc-tr {
+    display: table-row;
+    border-top : 1px solid #e6e6e6;
+}
+.tc-tr:first-child {
+    border-top : 0;
+}
+.tc-td {
+    display: table-cell;
+    /*border: 1px solid #e6e6e6;*/
+    padding : 10px;
+    position: relative;
+    vertical-align: middle;
+}
+.tc-td.result-time {
+
+}
+.step-icon {
+    width : 15px;
+    height : 15px;
+    border : 1px solid #cecece;
+    color : #cecece;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 12px;
+    background-color: #fff;
+}
+.tc-td.line:after {
+    content: '';
+    position : absolute;
+    width : 1px;
+    height: 100%;
+    background-color: #e6e6e6;
+    top : 0;
+    left : 50%;
+    margin-left: -.5px;
+    z-index: -1;
+}
+.tc-table .tc-tr:first-child .tc-td.line:after,.tc-table .tc-tr:last-child .tc-td.line:after {
+    height: 50%;   
+}
+.tc-table .tc-tr:first-child .tc-td.line:after {
+    top : 50%;
+}
+.tc-table .tc-tr:last-child .tc-td.line:after {
+    bottom : 50%;
+}
+.tc-table .tc-tr:last-child .step-icon {
+    background-color : #1d95d4;
+    border-color : #1d95d4;
+    color : #fff;
+    transform: rotate(180deg);
+}

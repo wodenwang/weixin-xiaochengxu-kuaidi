@@ -1,23 +1,23 @@
-App({
+App( {
 
-  onLaunch: function () {
-
+  onLaunch: function() {
+    console.log( 'ok' )
   },
 
-  getUserInfo:function(cb){
+  getUserInfo: function( cb ) {
     var that = this
-    if(this.globalData.userInfo){
-      typeof cb == "function" && cb(this.globalData.userInfo)
-    }else{
+    if( this.globalData.userInfo ) {
+      typeof cb == "function" && cb( this.globalData.userInfo )
+    } else {
       //调用登录接口
-      wx.login({
-        success: function (res) {
-          console.log(res);
-          wx.getUserInfo({
-            success: function (r) {
-              console.log(r);
+      wx.login( {
+        success: function( res ) {
+          console.log( res );
+          wx.getUserInfo( {
+            success: function( r ) {
+              console.log( r );
               that.globalData.userInfo = r.userInfo
-              typeof cb == "function" && cb(that.globalData.userInfo)
+              typeof cb == "function" && cb( that.globalData.userInfo )
             }
           })
         }
@@ -25,7 +25,7 @@ App({
     }
   },
 
-  globalData:{
-    userInfo:null
+  globalData: {
+    userInfo: null
   }
 })

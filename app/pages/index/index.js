@@ -3,6 +3,7 @@
 var app = getApp();
 var config = require( '../../config' );
 var db = require( '../../lib/db' );
+var common = require( '../../lib/common' );
 
 Page( {
   data: {
@@ -60,7 +61,19 @@ Page( {
 
             success: function( res ) {
               let result = res.data;
-              console.log( result );
+              console.log( '这是成功返回的数据：' + JSON.stringify( result.data ) );
+
+              //重定义result
+              let arr = [];
+              for(let v of result.data ) {
+                let obj = {};
+                obj.date = common.formatTime( v.time )[ 0 ];
+                obj.time = common.formatTime( v.time )[ 1 ];
+                obj.context = v.context;
+                console.log( common.formatTime( v.time ) );
+                arr.push( obj );
+              }
+              result.data = arr;
 
               if( result.status == 1 ) {//成功
                 that.setData( {
