@@ -1,14 +1,14 @@
 
 <!--加载-->
 <loading wx:if="{{loading.show}}">
-  {{loading.msg}}
+  加载中...
 </loading>
 
 
 <!-- 查询表单 -->
 <view class="search-wrap" style="margin-top:44px;">
   <form bindsubmit="submitForm">
-    <input placeholder="输入快递单号" name="code"/>
+    <input placeholder="输入快递单号" name="code" value="{{code}}"/>
     <button form-type="submit">搜索</button>
   </form>
 </view>

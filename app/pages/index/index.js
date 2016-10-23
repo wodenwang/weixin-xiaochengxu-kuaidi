@@ -9,8 +9,7 @@ Page( {
   data: {
     //loading区域控制
     loading: {
-      show: false,
-      msg: '加载中...'
+      show: false
     },
 
     //结果明细展示区域控制
@@ -21,7 +20,10 @@ Page( {
     //错误提示区域控制
     error: {
       show: false
-    }
+    },
+
+    //默认demo单号
+    code: '280562382866'
 
   },
 
@@ -31,6 +33,7 @@ Page( {
 
     //获取快递单号
     let code = e.detail.value.code;
+    that.setData( { code: code });
 
     //必填判断
     if( !code ) {
@@ -50,6 +53,7 @@ Page( {
         if( coms && coms.length > 0 ) {//找得到对应的快递公司
 
           let com = coms[ 0 ].comCode;//获取第一个快递公司,多个的情况后续再处理,TODO
+          console.log( "使用的com:", com );
           wx.request( {
             url: config.apiUrl,
             data: {
@@ -61,11 +65,11 @@ Page( {
 
             success: function( res ) {
               let result = res.data;
-              console.log( '这是成功返回的数据：' + JSON.stringify( result.data ) );
+              console.log( '这是成功返回的数据：', result.data );
 
               //重定义result
               let arr = [];
-              for(let v of result.data ) {
+              for( let v of result.data ) {
                 let obj = {};
                 obj.date = common.formatTime( v.time )[ 0 ];
                 obj.time = common.formatTime( v.time )[ 1 ];
